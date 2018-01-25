@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project_tree" model="ir.ui.view">
+            <field name="name">project.tree</field>
+            <field name="model">itb.project</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <field name="partner" options="{
+                        'no_quick_create': True,
+                        'no_create_edit': True,
+                        'no_create': True,
+                        'no_open': True
+                        }"/>
+                    <field name="manager" options="{
+                        'no_quick_create': True,
+                        'no_create_edit': True,
+                        'no_create': True,
+                        'no_open': True
+                        }"/>
+                    <field name="translator" options="{
+                        'no_quick_create': True,
+                        'no_create_edit': True,
+                        'no_create': True,
+                        'no_open': True
+                        }"/>
+                    <field name="product" options="{
+                        'no_quick_create': True,
+                        'no_create_edit': True,
+                        'no_create': True,
+                        'no_open': True
+                        }"/>
+                </tree>
+            </field>
+        </record>
+        <record id="project_form" model="ir.ui.view">
+            <field name="name">project.form</field>
+            <field name="model">itb.project</field>
+            <field name="arch" type="xml">
+                <form string="Projects">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="ref"/>
+                                <field name="partner" options="{
+                                    'no_quick_create': True,
+                                    'no_create_edit': True,
+                                    'no_create': True,
+                                    'no_open': True
+                                    }"/>
+                                <field name="analytic"
+                                       domain="[('type', '=', 'normal')]"
+                                       options="{
+                                    'no_quick_create': True,
+                                    'no_create_edit': True,
+                                    'no_create': True,
+                                    'no_open': True
+                                    }"/>
+                            </group>
+                            <group>
+                                <field name="manager" options="{
+                                    'no_quick_create': True,
+                                    'no_create_edit': True,
+                                    'no_create': True,
+                                    'no_open': True
+                                    }"/>
+                                <field name="translator" options="{
+                                    'no_quick_create': True,
+                                    'no_create_edit': True,
+                                    'no_create': True,
+                                    'no_open': True
+                                    }"/>
+                                <field name="product"
+                                       domain="[
+                                            ('sale_ok', '=', True),
+                                            ('categ_id', 'child_of', %(itbproject.product_category_ITB)d)
+                                        ]"
+                                       options="{
+                                    'no_quick_create': True,
+                                    'no_create_edit': True,
+                                    'no_create': True,
+                                    'no_open': True
+                                    }"/>
+                            </group>
+                        </group>
+                        <field name="task_ids"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="project_action" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">itb.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                    Please, create a project.
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="project_menu" name="Projects" parent="itbproject_project"
+                  action="project_action" sequence="10"/>
+    </data>
+</openerp>

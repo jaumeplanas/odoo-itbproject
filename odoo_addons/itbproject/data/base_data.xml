@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="base.main_partner" model="res.partner">
+            <field name="name">Jaume Planas Jarque</field>
+            <field name="street">Saldes, 61</field>
+            <field name="city">Berga</field>
+            <field name="zip">08600</field>
+            <field name="phone">938214487</field>
+            <field name="email">jaumeplan@gmail.com</field>
+            <field name="website">www.itberga.com</field>
+            <field name="VAT">ES77198667V</field>
+        </record>
+        <record id="base.main_company" model="res.company">
+            <field name="name">Jaume Planas Jarque</field>
+        </record>
+    </data>
+</openerp>

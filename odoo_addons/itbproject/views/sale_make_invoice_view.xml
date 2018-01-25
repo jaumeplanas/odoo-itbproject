@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_sale_order_make_invoice" model="ir.ui.view">
+            <field name="name">Create invoices</field>
+            <field name="model">sale.make.invoice</field>
+            <field name="inherit_id" ref="sale.view_sale_order_make_invoice"/>
+            <field name="arch" type="xml">
+                <field name="invoice_date" position="after">
+                    <field name="reference"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

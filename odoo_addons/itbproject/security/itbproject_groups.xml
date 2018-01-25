@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="module_category_itb" model="ir.module.category">
+            <field name="name">ITB</field>
+            <field name="visible" eval="True"/>
+        </record>
+        <record id="group_itb_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="comment">
+                Members of this groups have full access to ITB localisation
+                projects.
+            </field>
+            <field name="category_id" ref="module_category_itb"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <record id="group_itb_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="comment">
+                Members of this groups have read access to ITB localisation
+                projects.
+            </field>
+            <field name="category_id" ref="module_category_itb"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+    </data>
+</openerp>
+
+

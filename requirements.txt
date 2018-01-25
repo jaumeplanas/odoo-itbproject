@@ -1,0 +1,10 @@
+
+-r https://raw.githubusercontent.com/odoo/odoo/8.0/requirements.txt
+pyinotify
+https://nightly.odoo.com/8.0/nightly/src/odoo_8.0.latest.zip
+odoo-autodiscover
+--extra-index-url https://wheelhouse.odoo-community.org/oca-simple
+odoo8-addons-oca-l10n-spain
+odoo8-addons-oca-web
+odoo8-addon-super-calendar
+

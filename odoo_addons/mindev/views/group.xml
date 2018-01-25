@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+        <record id="mindev_group_tree" model="ir.ui.view">
+            <field name="name">mindev.group.tree</field>
+            <field name="model">mindev.group.tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="xname"/>
+                    <field name="id"/>
+                    <field name="xml_id"/>
+                    <field name="xml_module"/>
+                    <field name="xml_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="mindev_group_action" model="ir.actions.act_window">
+            <field name="name">Groups SetUp</field>
+            <field name="res_model">mindev.group.tree</field>
+            <field name="view_mode">tree</field>
+            <field name="view_type">tree</field>
+            <field name="view_id" ref="mindev_group_tree"/>
+        </record>
+        <menuitem id="menu_mindev_group" name="Groups SetUp"
+                  action="mindev_group_action"
+                  parent="mindev.menu_min_dev" sequence="10"/>
+    </data>
+</openerp>

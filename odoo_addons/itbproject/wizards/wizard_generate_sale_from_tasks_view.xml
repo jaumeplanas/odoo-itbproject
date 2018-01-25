@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="wizard_generate_sale_tasks_form" model="ir.ui.view">
+            <field name="name">wizard.generate.sale.tasks.form</field>
+            <field name="model">wizard.generate.sale.tasks</field>
+            <field name="arch" type="xml">
+                <form string="Wizard Generate Sale From Tasks">
+                    <group>
+                        <group>
+                            <field name="currency" invisible="1"/>
+                            <field name="description"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="product"/>
+                            <field name="quantity"/>
+                            <field name="price" readonly="1" widget="monetary"
+                                   options="{'currency_field': 'currency'}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="task_ids"
+                               nolabel="1"
+                               domain="[('sale_order', '=', False)]"
+                               context="{
+                                    'tree_view_ref': 'itbproject.task_wizard_tree',
+                                    'form_view_ref': 'itbproject.task_form',
+                               }"/>
+                    </group>
+                    <footer>
+                        <button name="do_sale" string="Generate Sale Order"
+                                type="object" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="wizard_generate_sale_tasks_action"
+                model="ir.actions.act_window">
+            <field name="name">Sale From Tasks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.generate.sale.tasks</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_generate_sale_tasks_form"/>
+            <field name="target">new</field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="wizard_generate_sale_taska_menu" name="Sale From Tasks"
+                  parent="itbproject_setup"
+                  action="wizard_generate_sale_tasks_action" sequence="10"
+                  groups="group_itb_manager"/>
+    </data>
+</openerp>
