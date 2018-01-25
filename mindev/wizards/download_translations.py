@@ -114,12 +114,12 @@ class DownloadTranslations(models.TransientModel):
                     last_msgid = False
                     with open(i18n_file, 'w') as output:
                         for line in buf:
-                            if line[:5] == "msgid":
-                                last_msgid = line[6:]
-                            if line[:6] == "msgstr":
-                                if last_msgid == line[7:]:
-                                    line = "msgstr \"\""
-                                last_msgid = False
+                            # if line[:5] == "msgid":
+                            #     last_msgid = line[6:]
+                            # if line[:6] == "msgstr":
+                            #     if last_msgid == line[7:]:
+                            #         line = "msgstr \"\""
+                            #     last_msgid = False
                             output.write(line)
             except Exception:
                 raise

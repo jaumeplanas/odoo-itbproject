@@ -11,6 +11,12 @@
                             <field name="currency" invisible="1"/>
                             <field name="description"/>
                             <field name="date"/>
+                            <field name="analytic" required="1" options="{
+                                'no_quick_create': True,
+                                'no_create_edit': True,
+                                'no_create': True,
+                                'no_open': True
+                                }" domain="[('type', '=', 'normal')]"/>
                         </group>
                         <group>
                             <field name="product"/>
@@ -36,15 +42,19 @@
                 </form>
             </field>
         </record>
+        <act_window name="Sale From Tasks"
+                    res_model="wizard.generate.sale.tasks"
+                    src_model="itb.task"
+                    view_mode="form"
+                    key2="client_action_multi"
+                    target="new"
+                    id="wizard_generate_sale_tasks_action"/>
+
         <record id="wizard_generate_sale_tasks_action"
                 model="ir.actions.act_window">
-            <field name="name">Sale From Tasks</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">wizard.generate.sale.tasks</field>
-            <field name="view_mode">form</field>
             <field name="view_id" ref="wizard_generate_sale_tasks_form"/>
-            <field name="target">new</field>
         </record>
+
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="wizard_generate_sale_taska_menu" name="Sale From Tasks"
                   parent="itbproject_setup"

@@ -105,6 +105,6 @@
         </record>
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="project_menu" name="Projects" parent="itbproject_project"
-                  action="project_action" sequence="10"/>
+                  action="project_action" sequence="20"/>
     </data>
 </openerp>

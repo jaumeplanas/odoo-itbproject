@@ -13,6 +13,10 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
     date = fields.Date(string="Sale Order Date", required=True)
     product = fields.Many2one(comodel_name="product.product", string="Product",
                               required=True)
+    analytic = fields.Many2one(
+        comodel_name="account.analytic.account",
+        string="Analytic"
+    )
     task_ids = fields.Many2many(comodel_name="itb.task", column1="wizard_id",
                                 column2="task_id")
     quantity = fields.Float(string="Quantity", digits=(16, 2), required=True)
@@ -21,11 +25,21 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
 
     @api.model
     def default_get(self, fields_list):
+        objaaa = self.env['account.analytic.account']
+        objtasks = self.env['itb.task']
         vals = super(WizardGenerateSaleFromTasks, self).default_get(
             fields_list=fields_list)
-        tasks = self.env['itb.task'].search([
-            ('sale_order', '=', False)
-        ])
+        ctx = dict(self._context)
+        if ctx.get('active_ids'):
+            tasks = objtasks.browse(ctx.get('active_ids'))
+        else:
+            tasks = self.env['itb.task'].search([
+                ('sale_order', '=', False)
+            ])
+        analytic = objaaa.search([
+            ('name', '=', 'EMAPS')
+        ], limit=1)
+        analytic_id = analytic and analytic.id or False
         product = None
         if len(tasks) > 0:
             c = Counter(tasks.mapped('product'))
@@ -39,7 +53,10 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
             vals.update(task_ids=task_ids,
                         product=product.id if c else False, currency=currency.id,
                         project_id=analytic.id if a else False)
-        vals.update(date=fields.Date.today())
+        vals.update(
+            date=fields.Date.today(),
+            analytic=analytic_id
+        )
         return vals
 
     @api.model
@@ -60,9 +77,9 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
 
     @api.multi
     def do_sale(self):
+        self.ensure_one()
         objsale = self.env['sale.order']
         objline = self.env['sale.order.line']
-        self.ensure_one()
         p = self.task_ids.mapped('partner')
         if len(p) != 1:
             raise ValidationError(_(u"Tasks include more than one partner."))
@@ -71,6 +88,7 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
             'partner_id': p[0].id,
             'client_order_ref': self.description,
             'date_order': self.date,
+            'project_id': self.analytic.id,
             'order_line': [(0, False, {
                 'product_id': self.product.id,
                 'name': u"Pedido núm.: %s" % self.description,

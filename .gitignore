@@ -113,3 +113,8 @@ venv.bak/
 /include/
 /share/
 /local/
+/ChangeLog
+/LICENSE
+/pip-selfcheck.json
+!/.gitignore
+/odoo-itberga-backup.sh

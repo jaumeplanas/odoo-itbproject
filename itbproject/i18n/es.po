@@ -1,0 +1,512 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* itbproject
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20171009\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-21 06:59+0000\n"
+"PO-Revision-Date: 2018-04-21 09:09+0200\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: itbproject
+#: model:res.groups,comment:itbproject.group_itb_manager
+msgid ""
+"\n"
+"                Members of this groups have full access to ITB localisation\n"
+"                projects.\n"
+"            "
+msgstr ""
+"\n"
+"                Los miembros de este grupo tienen acceso total a los proyectos de localización ITB.\n"
+"            "
+
+#. module: itbproject
+#: model:res.groups,comment:itbproject.group_itb_user
+msgid ""
+"\n"
+"                Members of this groups have read access to ITB localisation\n"
+"                projects.\n"
+"            "
+msgstr ""
+"\n"
+"                Los miembros de este grupo tienen acceso de lectura a los proyectos de localización ITB.\n"
+"            "
+
+#. module: itbproject
+#: model:ir.actions.act_window,help:itbproject.task_action
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                    <!-- Add Text Here -->\n"
+"                    Please, add a task.\n"
+"                </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                    <!-- Add Text Here -->\n"
+"                    Por favor, añada una tarea.\n"
+"                </p>\n"
+"            "
+
+#. module: itbproject
+#: model:ir.actions.act_window,help:itbproject.project_action
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                    <!-- Add Text Here -->\n"
+"                    Please, create a project.\n"
+"                </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                    <!-- Add Text Here -->\n"
+"                    Por favor, cree un proyecto.\n"
+"                </p>\n"
+"            "
+
+#. module: itbproject
+#: field:itb.task,qty:0
+msgid "Actual Quantity"
+msgstr "Cantidad real"
+
+#. module: itbproject
+#: field:wizard.generate.sale.tasks,analytic:0
+msgid "Analytic"
+msgstr "Analítica"
+
+#. module: itbproject
+#: field:itb.project,analytic:0 field:itb.task,analytic:0
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: itbproject
+#: view:website:account.report_invoice_document
+msgid "Bank Account:"
+msgstr "Cuenta bancaria:"
+
+#. module: itbproject
+#: field:itb.task,qty_cfm:0
+msgid "CFM Quantity"
+msgstr "Cantidad CFM"
+
+#. module: itbproject
+#: view:itb.task:itbproject.task_form
+#: view:wizard.generate.sale.tasks:itbproject.wizard_generate_sale_tasks_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: itbproject
+#: code:addons/itbproject/models/itb_task.py:10
+#: view:itb.task:itbproject.task_search selection:itb.task,state:0
+#, python-format
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: itbproject
+#: view:website:account.report_invoice_document
+msgid "Comment:"
+msgstr "Comentario:"
+
+#. module: itbproject
+#: field:itb.project,create_uid:0 field:itb.task,create_uid:0
+#: field:wizard.generate.sale.tasks,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: itbproject
+#: field:itb.project,create_date:0 field:itb.task,create_date:0
+#: field:wizard.generate.sale.tasks,create_date:0
+msgid "Created on"
+msgstr "Fecha de creación"
+
+#. module: itbproject
+#: field:wizard.generate.sale.tasks,currency:0
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: itbproject
+#: help:itb.task,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr "Fecha del último mensaje publicado en el registro."
+
+#. module: itbproject
+#: field:itb.project,manager:0
+msgid "Default Manager"
+msgstr "Gestor por defecto"
+
+#. module: itbproject
+#: field:itb.project,partner:0
+msgid "Default Partner"
+msgstr "Empresa por defecto"
+
+#. module: itbproject
+#: field:itb.project,product:0
+msgid "Default Product"
+msgstr "Producto por defecto"
+
+#. module: itbproject
+#: field:itb.project,translator:0
+msgid "Default Translator"
+msgstr "Traductor por defecto"
+
+#. module: itbproject
+#: field:wizard.generate.sale.tasks,description:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: itbproject
+#: view:website:account.report_invoice_document
+msgid "Description:"
+msgstr "Descripción:"
+
+#. module: itbproject
+#: field:itb.project,display_name:0 field:itb.task,display_name:0
+#: field:wizard.generate.sale.tasks,display_name:0
+msgid "Display Name"
+msgstr "Nombre de visualización"
+
+#. module: itbproject
+#: view:itb.task:itbproject.task_search
+msgid "Done"
+msgstr "Finalizado"
+
+#. module: itbproject
+#: code:addons/itbproject/models/itb_task.py:6
+#: view:itb.task:itbproject.task_form selection:itb.task,state:0
+#, python-format
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: itbproject
+#: view:itb.task:itbproject.task_search
+msgid "Draft&Open"
+msgstr "Borrador y abierto"
+
+#. module: itbproject
+#: view:website:account.report_invoice_document
+msgid "Due Date:"
+msgstr "Fecha vencimiento:"
+
+#. module: itbproject
+#: code:addons/itbproject/models/itb_task.py:9
+#: view:itb.task:itbproject.task_form selection:itb.task,state:0
+#, python-format
+msgid "End"
+msgstr "Fin"
+
+#. module: itbproject
+#: field:itb.task,date_end:0 field:itb.task,date_end_computed:0
+msgid "End Date"
+msgstr "Fecha finalización"
+
+#. module: itbproject
+#: view:website:account.report_invoice_document
+msgid "Fiscal Position Remark:"
+msgstr "Observaciones de la posición fiscal"
+
+#. module: itbproject
+#: field:itb.task,message_follower_ids:0
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: itbproject
+#: view:wizard.generate.sale.tasks:itbproject.wizard_generate_sale_tasks_form
+msgid "Generate Sale Order"
+msgstr "Generar pedido de venta"
+
+#. module: itbproject
+#: model:ir.model,name:itbproject.model_wizard_generate_sale_tasks
+msgid "Generate Sales From Tasks Wizard"
+msgstr "Asistente Generar ventas desde tareas"
+
+#. module: itbproject
+#: help:itb.task,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Contiene el resumen del Chatter (número de mensajes, ...). Este resumen está directamente en formato HTML para poder insertarlo en vistas kanban."
+
+#. module: itbproject
+#: field:itb.project,id:0 field:itb.task,id:0
+#: field:wizard.generate.sale.tasks,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: itbproject
+#: model:ir.module.category,name:itbproject.module_category_itb
+#: model:product.category,name:itbproject.product_category_ITB
+msgid "ITB"
+msgstr "ITB"
+
+#. module: itbproject
+#: model:ir.model,name:itbproject.model_itb_project
+msgid "ITB Project"
+msgstr "Proyecto ITB"
+
+#. module: itbproject
+#: model:ir.ui.menu,name:itbproject.itbproject_root
+msgid "ITB Projects"
+msgstr "Proyectos ITB"
+
+#. module: itbproject
+#: model:ir.model,name:itbproject.model_itb_task
+msgid "ITB Task"
+msgstr "Tarea ITB"
+
+#. module: itbproject
+#: view:sale.order:itbproject.view_order_form
+msgid "ITB Tasks"
+msgstr "Tareas ITB"
+
+#. module: itbproject
+#: help:itb.task,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "Si se marcan, los nuevos mensajes requieren su atención."
+
+#. module: itbproject
+#: view:website:account.report_invoice_document
+msgid "Invoice Date:"
+msgstr "Fecha de factura:"
+
+#. module: itbproject
+#: field:itb.task,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Es un seguidor"
+
+#. module: itbproject
+#: field:sale.order,itb_task_ids:0
+msgid "Itb task ids"
+msgstr "Itb task ids"
+
+#. module: itbproject
+#: field:itb.task,message_last_post:0
+msgid "Last Message Date"
+msgstr "Fecha último mensaje"
+
+#. module: itbproject
+#: field:itb.project,__last_update:0 field:itb.task,__last_update:0
+#: field:wizard.generate.sale.tasks,__last_update:0
+msgid "Last Modified on"
+msgstr "Fecha última modificación"
+
+#. module: itbproject
+#: field:itb.project,write_uid:0 field:itb.task,write_uid:0
+#: field:wizard.generate.sale.tasks,write_uid:0
+msgid "Last Updated by"
+msgstr "Última modificación por"
+
+#. module: itbproject
+#: field:itb.project,write_date:0 field:itb.task,write_date:0
+#: field:wizard.generate.sale.tasks,write_date:0
+msgid "Last Updated on"
+msgstr "Fecha última modificación"
+
+#. module: itbproject
+#: model:product.template,name:itbproject.product_mlemaps
+msgid "MLEMAPS"
+msgstr "MLEMAPS"
+
+#. module: itbproject
+#: field:itb.task,manager:0 model:res.groups,name:itbproject.group_itb_manager
+msgid "Manager"
+msgstr "Responsable"
+
+#. module: itbproject
+#: field:itb.task,message_ids:0
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: itbproject
+#: help:itb.task,message_ids:0
+msgid "Messages and communication history"
+msgstr "Historial de mensajes y comunicaciones"
+
+#. module: itbproject
+#: view:website:report.external_layout_header
+msgid "NIF:"
+msgstr "NIF:"
+
+#. module: itbproject
+#: field:itb.project,name:0 field:itb.task,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: itbproject
+#: view:itb.task:itbproject.task_form field:itb.task,notes:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: itbproject
+#: code:addons/itbproject/models/itb_task.py:7
+#: view:itb.task:itbproject.task_form selection:itb.task,state:0
+#, python-format
+msgid "Open"
+msgstr "Abierto"
+
+#. module: itbproject
+#: field:itb.task,partner:0
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: itbproject
+#: view:website:account.report_invoice_document
+msgid "Payment Term:"
+msgstr "Plazo de pago:"
+
+#. module: itbproject
+#: field:itb.task,date_end_planned:0
+msgid "Planned End Date"
+msgstr "Fecha final prevista"
+
+#. module: itbproject
+#: field:wizard.generate.sale.tasks,price:0
+msgid "Price"
+msgstr "Precio"
+
+#. module: itbproject
+#: field:itb.task,product:0 field:wizard.generate.sale.tasks,product:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: itbproject
+#: field:itb.task,project:0
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: itbproject
+#: model:ir.actions.act_window,name:itbproject.project_action
+#: model:ir.ui.menu,name:itbproject.itbproject_project
+#: model:ir.ui.menu,name:itbproject.project_menu
+#: view:itb.project:itbproject.project_form
+msgid "Projects"
+msgstr "Proyectos"
+
+#. module: itbproject
+#: field:wizard.generate.sale.tasks,quantity:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: itbproject
+#: field:itb.task,date_received:0
+msgid "Received Date"
+msgstr "Fecha recepción"
+
+#. module: itbproject
+#: field:itb.project,ref:0 field:sale.make.invoice,reference:0
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: itbproject
+#: model:ir.actions.act_window,name:itbproject.wizard_generate_sale_tasks_action
+#: model:ir.ui.menu,name:itbproject.wizard_generate_sale_taska_menu
+msgid "Sale From Tasks"
+msgstr "Venta desde tareas"
+
+#. module: itbproject
+#: field:wizard.generate.sale.tasks,date:0
+msgid "Sale Order Date"
+msgstr "Fecha pedido de venta"
+
+#. module: itbproject
+#: field:itb.task,sale_order:0
+msgid "Sale order"
+msgstr "Pedido de venta"
+
+#. module: itbproject
+#: model:ir.model,name:itbproject.model_sale_make_invoice
+msgid "Sales Make Invoice"
+msgstr "Ventas. Realizar factura"
+
+#. module: itbproject
+#: model:ir.model,name:itbproject.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: itbproject
+#: model:ir.ui.menu,name:itbproject.itbproject_setup
+msgid "Setup"
+msgstr "Configuración"
+
+#. module: itbproject
+#: field:itb.task,shipment:0
+msgid "Shipment"
+msgstr "Envío"
+
+#. module: itbproject
+#: field:itb.task,date_start:0
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+#. module: itbproject
+#: field:itb.task,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: itbproject
+#: field:itb.task,message_summary:0
+msgid "Summary"
+msgstr "Resumen"
+
+#. module: itbproject
+#: field:itb.project,task_ids:0 field:wizard.generate.sale.tasks,task_ids:0
+msgid "Task ids"
+msgstr "Task ids"
+
+#. module: itbproject
+#: model:ir.actions.act_window,name:itbproject.task_action
+#: model:ir.ui.menu,name:itbproject.task_menu
+#: view:itb.task:itbproject.task_form view:itb.task:itbproject.task_tree
+#: view:itb.task:itbproject.task_wizard_tree
+msgid "Tasks"
+msgstr "Tareas"
+
+#. module: itbproject
+#: code:addons/itbproject/wizards/wizard_generate_sale_from_tasks.py:85
+#, python-format
+msgid "Tasks include more than one partner."
+msgstr "Las tareas incluyen más de una empresa."
+
+#. module: itbproject
+#: field:itb.task,translator:0
+msgid "Translator"
+msgstr "Traductor"
+
+#. module: itbproject
+#: field:itb.task,message_unread:0
+msgid "Unread Messages"
+msgstr "Mensajes no leídos"
+
+#. module: itbproject
+#: model:res.groups,name:itbproject.group_itb_user
+msgid "User"
+msgstr "Usuario"
+
+#. module: itbproject
+#: code:addons/itbproject/models/itb_task.py:8
+#: view:itb.task:itbproject.task_form view:itb.task:itbproject.task_search
+#: selection:itb.task,state:0
+#, python-format
+msgid "Waiting"
+msgstr "En espera"
+
+#. module: itbproject
+#: view:wizard.generate.sale.tasks:itbproject.wizard_generate_sale_tasks_form
+msgid "Wizard Generate Sale From Tasks"
+msgstr "Asistente Generar venta desde tareas"
+
+#. module: itbproject
+#: code:addons/itbproject/models/sale.py:33
+#, python-format
+msgid "You cannot group sales having different currencies for the same partner."
+msgstr "No puede agrupar ventas que tengan diferentes divisas para la misma empresa."
+
+#. module: itbproject
+#: code:addons/itbproject/wizards/sale_make_invoice.py:24
+#, python-format
+msgid "You shouldn't manually invoice the following sale order %s"
+msgstr "No debe facturar manualmente el siguiente pedido de venta %s"
