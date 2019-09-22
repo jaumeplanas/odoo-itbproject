@@ -1,8 +1,8 @@
 # -*- coding: utf8 -*-
 
 from collections import Counter
-from openerp import models, fields, api, _
-from openerp.exceptions import ValidationError
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class WizardGenerateSaleFromTasks(models.TransientModel):
@@ -22,40 +22,23 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
     quantity = fields.Float(string="Quantity", digits=(16, 2), required=True)
     currency = fields.Many2one(comodel_name="res.currency")
     price = fields.Float(string="Price", digits=(16, 2))
+    itb_export = fields.Many2one(
+        comodel_name="itb.export",
+        string="ITB Export",
+    )
 
     @api.model
     def default_get(self, fields_list):
         objaaa = self.env['account.analytic.account']
-        objtasks = self.env['itb.task']
+        # objtasks = self.env['itb.task']
         vals = super(WizardGenerateSaleFromTasks, self).default_get(
             fields_list=fields_list)
-        ctx = dict(self._context)
-        if ctx.get('active_ids'):
-            tasks = objtasks.browse(ctx.get('active_ids'))
-        else:
-            tasks = self.env['itb.task'].search([
-                ('sale_order', '=', False)
-            ])
         analytic = objaaa.search([
             ('name', '=', 'EMAPS')
         ], limit=1)
-        analytic_id = analytic and analytic.id or False
-        product = None
-        if len(tasks) > 0:
-            c = Counter(tasks.mapped('product'))
-            if c:
-                product = c.most_common(1)[0][0]
-            a = Counter(tasks.mapped('analytic'))
-            if a:
-                analytic = a.most_common(1)[0][0]
-            task_ids = [(6, False, [x.id for x in tasks])]
-            currency = self.env.user.company_id.currency_id
-            vals.update(task_ids=task_ids,
-                        product=product.id if c else False, currency=currency.id,
-                        project_id=analytic.id if a else False)
         vals.update(
-            date=fields.Date.today(),
-            analytic=analytic_id
+            date=fields.Date.context_today(self),
+            analytic=analytic.id
         )
         return vals
 
@@ -74,6 +57,13 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
     @api.onchange("product", "quantity")
     def onchange_product_quantity(self):
         self.price = self._calculate_price(self.product, self.quantity)
+
+    @api.onchange("itb_export")
+    def onchange_itb_export(self):
+        if self.itb_export:
+            self.task_ids = self.itb_export.itb_task_ids
+        else:
+            self.task_ids = [(6, 0, self.env.context.get("active_ids", []))]
 
     @api.multi
     def do_sale(self):

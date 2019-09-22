@@ -1,5 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_itb_project_manager,access.itb.project.manager,model_itb_project,group_itb_manager,1,1,1,1
 access_itb_project_user,access.itb.project.user,model_itb_project,group_itb_user,1,0,0,0
+
 access_itb_task_manager,access.itb.task.manager,model_itb_task,group_itb_manager,1,1,1,1
 access_itb_task_user,access.itb.task.user,model_itb_task,group_itb_user,1,0,0,0
+
+access_itb_export_manager,access.itb.export.manager,model_itb_export,group_itb_manager,1,1,1,1
+access_itb_export_user,access.itb.export.user,model_itb_export,group_itb_user,1,0,0,0

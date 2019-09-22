@@ -16,7 +16,7 @@
                                 'no_create_edit': True,
                                 'no_create': True,
                                 'no_open': True
-                                }" domain="[('type', '=', 'normal')]"/>
+                                }"/>
                         </group>
                         <group>
                             <field name="product"/>
@@ -24,6 +24,9 @@
                             <field name="price" readonly="1" widget="monetary"
                                    options="{'currency_field': 'currency'}"/>
                         </group>
+                    </group>
+                    <group>
+                        <field name="itb_export"/>
                     </group>
                     <group>
                         <field name="task_ids"

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="itb_export_form" model="ir.ui.view">
+            <field name="name">itb.export.form</field>
+            <field name="model">itb.export</field>
+            <field name="arch" type="xml">
+                <form string="ITB Export">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                            </group>
+                        </group>
+                        <group string="ITB Tasks">
+                            <field name="itb_task_ids"
+                                   nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="itb_export_tree" model="ir.ui.view">
+            <field name="name">ITB Exports</field>
+            <field name="model">itb.export</field>
+            <field name="arch" type="xml">
+                <tree string="ITB Exports">
+                    <field name="name"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="itb_export_search" model="ir.ui.view">
+            <field name="name">itb.export.search</field>
+            <field name="model">itb.export</field>
+            <field name="arch" type="xml">
+                <search string="ITB Exports">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <filter name="filter_date"
+                            date="date"
+                            string="Date"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="itb_export_action" model="ir.actions.act_window">
+            <field name="name">ITB Exports</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">itb.export</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id"
+                   ref="itb_export_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                    Please, add an ITB Export.
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="itb_export_action_tree">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="itb_export_tree"/>
+            <field name="act_window_id" ref="itb_export_action"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="itb_export_action_form">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="itb_export_form"/>
+            <field name="act_window_id" ref="itb_export_action"/>
+        </record>
+
+        <menuitem id="itb_export_menu"
+                  name="ITB Exports"
+                  parent="itbproject_project"
+                  action="itb_export_action"
+                  sequence="30"/>
+    </data>
+</odoo>

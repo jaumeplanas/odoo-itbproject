@@ -1,6 +1,7 @@
-# -*- coding: utf8 -*-
+# Copyright 2018 Jaume Planas
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from openerp import models, fields, api, _
+from odoo import models, fields, api, _
 
 STATES = [
     ('draft', _("Draft")),
@@ -14,7 +15,7 @@ STATES = [
 class ITBTask(models.Model):
     _name = "itb.task"
     _description = "ITB Task"
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     @api.depends("date_end", "date_end_planned")
     def _get_date_end_computed(self):
@@ -22,34 +23,70 @@ class ITBTask(models.Model):
             r.date_end_computed = r.date_end or r.date_end_planned
 
     name = fields.Char(string="Name", required=True)
-    state = fields.Selection(selection=STATES, string="State", required=True,
-                             track_visibility="onchange")
-    project = fields.Many2one(comodel_name="itb.project", string="Project",
-                              required=True)
-    shipment = fields.Char(string="Shipment", required=True)
-    product = fields.Many2one(comodel_name="product.product", string="Product",
-                              required=True)
-    qty = fields.Float(string="Actual Quantity", required=True, digits=(16, 2))
-    qty_cfm = fields.Float(string="CFM Quantity", digits=(16, 2))
-    manager = fields.Many2one(comodel_name="res.users", required=True)
-    translator = fields.Many2one(comodel_name="res.users", required=True)
-    partner = fields.Many2one(comodel_name="res.partner", required=True)
-    analytic = fields.Many2one("account.analytic.account",
-                               string="Analytic Account")
+    state = fields.Selection(
+        selection=STATES,
+        string="State",
+        required=True,
+        default="draft",
+        track_visibility="onchange",
+    )
+    project = fields.Many2one(
+        comodel_name="itb.project",
+        string="Project",
+        required=True,
+    )
+    shipment = fields.Char(
+        string="Shipment",
+        required=True,
+    )
+    product = fields.Many2one(
+        comodel_name="product.product",
+        string="Product",
+        required=True,
+    )
+    qty = fields.Float(
+        string="Actual Quantity",
+        required=True,
+        digits=(16, 2),
+    )
+    qty_cfm = fields.Float(
+        string="CFM Quantity",
+        digits=(16, 2),
+    )
+    manager = fields.Many2one(
+        comodel_name="res.users",
+        required=True,
+    )
+    translator = fields.Many2one(
+        comodel_name="res.users",
+        required=True,
+    )
+    partner = fields.Many2one(
+        comodel_name="res.partner",
+        required=True,
+    )
+    analytic = fields.Many2one(
+        "account.analytic.account",
+        string="Analytic Account",
+    )
     date_received = fields.Date(string="Received Date")
     date_start = fields.Date(string="Start Date")
     date_end_planned = fields.Date(string="Planned End Date")
     date_end = fields.Date(string="End Date")
-    date_end_computed = fields.Date(string="End Date",
-                                    compute=_get_date_end_computed, store=True)
+    date_end_computed = fields.Date(
+        string="End Date",
+        compute=_get_date_end_computed,
+        store=True,
+    )
     notes = fields.Html(string="Notes")
-    sale_order = fields.Many2one(comodel_name="sale.order")
-
-    @api.model
-    def default_get(self, fields_list):
-        res = super(ITBTask, self).default_get(fields_list=fields_list)
-        res.update(state='draft')
-        return res
+    sale_order = fields.Many2one(
+        comodel_name="sale.order",
+        string="Sale Order",
+    )
+    itb_export = fields.Many2one(
+        comodel_name="itb.export",
+        string="ITB Export",
+    )
 
     @api.onchange("project", "shipment")
     def onchange_project_name(self):
@@ -68,7 +105,7 @@ class ITBTask(models.Model):
     @api.multi
     def set_open(self):
         if not self.date_start:
-            self.date_start = fields.Date.today()
+            self.date_start = fields.Date.context_today(self)
         self.state = 'open'
 
     @api.multi
@@ -78,13 +115,13 @@ class ITBTask(models.Model):
     @api.multi
     def set_end(self):
         if not self.date_end:
-            self.date_end = fields.Date.today()
+            self.date_end = fields.Date.context_today(self)
         self.state = 'end'
 
     @api.multi
     def set_draft(self):
         if not self.date_received:
-            self.date_received = fields.Date.today()
+            self.date_received = fields.Date.context_today(self)
         self.state = 'draft'
 
     @api.multi

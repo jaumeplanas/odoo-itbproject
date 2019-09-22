@@ -1,4 +1,5 @@
-# -*- coding: utf8 -*-
+# Copyright 2018 Jaume Planas
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-import models
-import wizards
+from . import models
+from . import wizards
