@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mindev_group,mindev.group,mindev.model_mindev_group_tree,group_mindev_manager,1,1,1,1
-access_mindev_menu,mindev.menu,mindev.model_mindev_menu_tree,group_mindev_manager,1,1,1,1
