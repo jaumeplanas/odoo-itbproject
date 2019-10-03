@@ -1,6 +1,6 @@
-# -*- coding: utf8 -*-
+# Copyright 2018 Jaume Planas
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from collections import Counter
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -78,7 +78,7 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
             'partner_id': p[0].id,
             'client_order_ref': self.description,
             'date_order': self.date,
-            'project_id': self.analytic.id,
+            'analytic_account_id': self.analytic.id,
             'order_line': [(0, False, {
                 'product_id': self.product.id,
                 'name': u"Pedido núm.: %s" % self.description,
@@ -87,15 +87,18 @@ class WizardGenerateSaleFromTasks(models.TransientModel):
 
         }
         sale = objsale.create(vals)
-        sale.onchange_partner_id(p[0].id)
+        sale.onchange_partner_id()
         # Link tasks to this sale order
         self.task_ids.write({
             'sale_order': sale.id
         })
 
         # Return action
-        res = self.env['ir.actions.act_window'].for_xml_id("sale",
-                                                           "action_quotations")
-        res.update(views=[[False, "form"]], res_id=sale.id)
+        res = self.env['ir.actions.act_window'].for_xml_id(
+            "sale", "action_quotations")
+        res.update(
+            res_id=sale.id,
+            views=[[False, "form"]],
+        )
 
         return res
