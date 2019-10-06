@@ -26,6 +26,7 @@
         'views/task_view.xml',
         'views/sale_view.xml',
         'views/export_view.xml',
+        'views/account_invoice_report.xml',
         'wizards/wizard_generate_sale_from_tasks_view.xml',
         'wizards/wizard_generate_export_from_tasks.xml',
         # QWeb
