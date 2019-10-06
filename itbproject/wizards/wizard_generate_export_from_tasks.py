@@ -21,6 +21,11 @@ class WizardGenerateExportFromTasks(models.TransientModel):
             WizardGenerateExportFromTasks, self).default_get(fields_list)
         res.update(date=fields.Date.context_today(self))
         active_ids = self.env.context.get("active_ids", False)
+        if not active_ids:
+            active_ids = self.env["itb.task"].search([
+                ('itb_export', '=', False),
+                ('state', 'in', ('open', 'waiting', 'end'))
+            ])
         if active_ids:
             res.update(itb_task_ids=[(6, 0, active_ids)])
 
