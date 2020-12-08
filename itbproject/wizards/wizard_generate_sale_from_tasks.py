@@ -97,9 +97,8 @@ class WizardGenerateSaleFromTask(models.TransientModel):
         objlines = self.env["wizard.generate.sale.task.line"]
 
         for prod, tasks in groupby(
-            self.task_ids.sorted(key=lambda r: r.product),
-            key=lambda r: r.product,
-        ):
+                self.task_ids.sorted(
+                    key=lambda r: r.product.id), key=lambda r: r.product):
             tids = [t.id for t in tasks]
             otids = self.env["itb.task"].browse(tids)
             vals = {
